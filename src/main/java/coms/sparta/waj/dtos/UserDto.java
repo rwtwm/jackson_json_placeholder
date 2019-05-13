@@ -1,6 +1,6 @@
 package coms.sparta.waj.dtos;
 
-public class UsersDto
+public class UserDto
 {
     int id;
     String name;
