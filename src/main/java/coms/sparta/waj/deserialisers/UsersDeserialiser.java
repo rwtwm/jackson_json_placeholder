@@ -5,18 +5,20 @@ import coms.sparta.waj.dtos.UserDto;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
-public class UserDeserialiser
+public class UsersDeserialiser
 {
-    private UserDto userDto;
+    private UserDto[] userDto;
 
-    public UserDeserialiser(String fileLocation)
+    public UsersDeserialiser(String fileLocation)
     {
         ObjectMapper userMapper = new ObjectMapper();
 
         try
         {
-            userDto = userMapper.readValue(new File(fileLocation), UserDto.class);
+            userDto = userMapper.readValue(new File(fileLocation), UserDto[].class);
         }
         catch (IOException e)
         {
@@ -24,8 +26,13 @@ public class UserDeserialiser
         }
     }
 
-    public UserDto getUserDto()
+    public UserDto[] getUsersDto()
     {
         return userDto;
+    }
+
+    public List<UserDto> getUsersAsList()
+    {
+        return Arrays.asList(userDto);
     }
 }
